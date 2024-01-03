@@ -13,12 +13,12 @@ namespace TranslationsLoader
             string[] translationText = File.ReadAllLines(path);
             foreach (string t in translationText)
             {
-                if (!t.Contains("⇨"))
+                if (!t.Contains("/"))
                 {
                     continue;
                 }
 
-                _translations.Add(t.Split("⇨")[0], t.Split("⇨")[1]);
+                _translations.Add(t.Split("/")[0], t.Split("/")[1]);
             }
         }
     }

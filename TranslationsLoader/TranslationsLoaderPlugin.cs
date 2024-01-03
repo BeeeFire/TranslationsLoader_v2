@@ -32,7 +32,7 @@ namespace TranslationsLoader
         public void PostProcessTypeModel(TypeModel model, PluginPostProcessTypeModelEventInfo info)
         {
             Translations translations = new Translations(TranslationsFileOption.Value);
-            List<TypeInfo> types = model.Types;
+            IEnumerable<TypeInfo> types = model.Types;
 
             foreach(TypeInfo type in types)
             {
@@ -44,32 +44,37 @@ namespace TranslationsLoader
 
         private void DeobfuscateType(TypeInfo type, Translations translations)
         {
-            if (translations._translations.TryGetValue(type.Name, out string typeTranslation))
+            if (translations._translations.TryGetValue(type.CSharpName, out string typeTranslation))
             {
-                type.Name = typeTranslation;
+                //type.Name += "___" + typeTranslation;
+                type.Name = type.CSharpName + "___" + typeTranslation;
             }
-
+            
             foreach (FieldInfo field in type.DeclaredFields)
             {
-                if (translations._translations.TryGetValue(field.Name, out string fieldTranslation))
+                if (translations._translations.TryGetValue(field.CSharpName, out string fieldTranslation))
                 {
-                    field.Name = fieldTranslation;
+                    //field.Name += "___" + fieldTranslation;
+                    field.Name = field.CSharpName + "___" + fieldTranslation;
                 }
             }
 
             foreach (PropertyInfo property in type.DeclaredProperties)
             {
-                if (translations._translations.TryGetValue(property.Name, out string propertyTranslation))
+                if (translations._translations.TryGetValue(property.CSharpName, out string propertyTranslation))
                 {
-                    property.Name = propertyTranslation;
+                    //property.Name += "___" + propertyTranslation;
+                    property.Name = property.CSharpName + "___" + propertyTranslation;
                 }
             }
 
             foreach (MethodInfo method in type.DeclaredMethods)
             {
-                if (translations._translations.TryGetValue(method.Name, out string methodTranslation))
+                if (translations._translations.TryGetValue(method.CSharpName, out string methodTranslation))
                 {
-                    method.Name = methodTranslation;
+                    //method.Name += "___" + methodTranslation;
+                    method.Name = method.CSharpName + "___" + methodTranslation;
+
                 }
             }
 

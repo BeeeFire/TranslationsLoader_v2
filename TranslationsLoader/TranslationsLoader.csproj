@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Il2CppTranslator" Version="1.0.0" />
+    <PackageReference Include="NoisyCowStudios.Il2CppInspector" Version="2021.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Bin2Object">
       <HintPath>G:\workspace\tooling\il2cpp\Il2CppInspector\Il2CppInspector.Common\bin\Debug\netcoreapp3.1\Bin2Object.dll</HintPath>
     </Reference>
